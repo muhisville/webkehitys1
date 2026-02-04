@@ -1,0 +1,1 @@
+Tämä on Laurean Web-kehitys 1 kurssin repositio.
