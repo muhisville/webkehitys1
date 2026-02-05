@@ -1,0 +1,35 @@
+// Harjoitus 9
+
+var x = 52; 
+var order = 'Beer'; 
+if (x > 50) {
+document.write("<h1>He's over 50!</h1>");
+} else if (x = 52) {
+document.write("<h1>He's 52! Fucking great!</h1>");
+} else if (x <= 50 && x> 30){
+document.write("<h3>Middle aged man, who ordered some </h3>"+order);
+} else {
+document.write("It seems you're bit underaged.");
+}
+
+// Harjoitus 10
+var arr = [];
+for (var i=0; i<15; i++) {
+arr.push(Math.random(1-100));
+
+}
+console.log(arr);
+document.write("<h1>"+(arr)+"</h1>")
+console.log("Viesti")
+
+// Harjoitus 11
+
+function addNumbers(a, b) {
+if(a+b>100){alert("Suurempi kuin sata")}
+document.write("<h2>"+(a+b)+"</h2>")
+return a + b;
+
+}
+console.log(addNumbers(98, 15));
+
+
