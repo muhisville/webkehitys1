@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Työpaja 2: JavaScript BOM & DOM</title>
+</head>
+
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif
+	}
+
+	h2 {
+		color: blue
+	}
+
+	code {
+		font-size: larger;
+	}
+</style>
+
+<!-- SCRIPT TÄGIN VOIT KIRJOITTAA TÄHÄN -->
+
+<script>
+// Harjoitus 4
+// Kysytään käyttäjältä, onko hän opiskelija ja toimitaan sen mukaan.
+function opiskelijako() {
+    nimi = prompt("Mikä on nimesi?")
+  let vastaus = "Oletko opiskelija?";
+  if (confirm(vastaus) == true) {
+    document.write("Tervetuloa " + nimi + "!")
+  } else {
+    document.write(nimi + ", valitettavasti tämä sivu on tarkoitettu vain opiskelijoille :(");
+  }
+}
+opiskelijako()
+</script>
+
+<body>
+</body>
+</html>

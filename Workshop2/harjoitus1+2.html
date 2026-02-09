@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Työpaja 2: JavaScript BOM & DOM</title>
+</head>
+
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif
+	}
+
+	h2 {
+		color: blue
+	}
+
+	code {
+		font-size: larger;
+	}
+</style>
+
+<!-- SCRIPT TÄGIN VOIT KIRJOITTAA TÄHÄN -->
+<script>
+// Harjoitus 1
+// Muotoillaan näkymää html-tageilla
+document.write("<p><strong><i>\"If I had nine hours to chop down a tree, I'd spend the first six sharpening my ax.\"</strong></i><br>-- Abraham Lincoln</p>")
+
+// Harjoitus 2
+// Luodaan toistuva lause. Käyttäjä määrää toistojen määrän.
+function repeatingText(lause){
+    lkm = prompt("Anna toistojen määrä: ")
+for (let i=0; i < lkm; i++) {
+document.write(lause + "<br>");
+}
+}
+repeatingText("Lause toistuu.")
+</script>
+
+<body>
+</body>
+</html>

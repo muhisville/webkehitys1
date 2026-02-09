@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Työpaja 2: JavaScript BOM & DOM</title>
+</head>
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif
+	}
+
+	h2 {
+		color: blue
+	}
+
+	code {
+		font-size: larger;
+	}
+</style>
+<!-- SCRIPT TÄGIN VOIT KIRJOITTAA TÄHÄN -->
+
+<script>
+
+const images = [
+"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+]; 
+document.write('<img src=" ' + images[1] + ' "><br>');
+luku = Math.floor(Math.random() * images.length);
+document.write('<img src=" ' + images[luku] + ' ">');
+
+</script>
+
+<body>
+</body>
+</html>

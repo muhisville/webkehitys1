@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Työpaja 2: JavaScript BOM & DOM</title>
+</head>
+
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif
+	}
+
+	h2 {
+		color: blue
+	}
+
+	code {
+		font-size: larger;
+	}
+</style>
+
+<!-- SCRIPT TÄGIN VOIT KIRJOITTAA TÄHÄN -->
+
+<script>
+// Harjoitus 3
+let selain = navigator.appVersion;
+if(selain.includes('Mozilla') == true){
+    alert("Käytät Mozillaa. Sinut ohjataan Mozillan sivulle")
+location.href = "http://www.mozilla.org";}
+else{
+    alert("Käytät jotain muuta selainta kuin Mozillaa")
+location.href = "http://www.brave.com"}
+</script>
+
+<body>
+</body>
+</html>
