@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON-esimerkki</title>
+    <style>
+        #jsondata {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<p>
+    <button onclick="showNames()">Näytä vain etu- ja sukunimi</button>
+    <button onclick="showAll()">Näytä kaikki tiedot</button>
+</p>
+
+<div id="jsondata">JSON-data näkyy täällä.</div>
+
+<script>
+    // JSON-data merkkijonona
+    var text = '{ "employees" : [' +
+        '{ "firstName":"John" , "lastName":"Doe" },' +
+        '{ "firstName":"Anna" , "lastName":"Smith" },' +
+        '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+    // Muutetaan merkkijono JavaScript-olioksi
+    var data = JSON.parse(text);
+
+    // Näytetään vain etu- ja sukunimet
+    function showNames() {
+        var output = "";
+
+        for (var i = 0; i < data.employees.length; i++) {
+            output += data.employees[i].firstName + " " +
+                      data.employees[i].lastName + "<br>";
+        }
+
+        document.getElementById("jsondata").innerHTML = output;
+    }
+
+    // Näytetään kaikki tiedot
+    function showAll() {
+        var output = "";
+
+        for (var i = 0; i < data.employees.length; i++) {
+            output += "Etu nimi: " + data.employees[i].firstName + "<br>";
+            output += "Suku nimi: " + data.employees[i].lastName + "<br><br>";
+        }
+
+        document.getElementById("jsondata").innerHTML = output;
+    }
+</script>
+
+</body>
+</html>
