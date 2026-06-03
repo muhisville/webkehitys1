@@ -18,8 +18,8 @@
 	<p>JSON tarkoittaa JavaScript Object Notationia, ja se tarkoittaa, että esittelemme datan muodossa, jonka JavaScript
 		ymmärtää sellaisenaan. Muunnoksia ei tarvita sen käyttämiseen.</p>
 	<p>
-		<button>Näytä vain etu- ja sukunimi</button>
-		<button>Näytä kaikki tiedot</button>
+		<button onclick = 'etuJaSuku()'>Näytä vain etu- ja sukunimi</button>
+		<button onclick = 'kaikki()'>Näytä kaikki tiedot</button>
 	</p>
 	<p>Kokeillaan seuraavaa. Voit luoda uuden JSON-datasetin JavaScript-koodissasi alla olevan mallin mukaisesti. Luo
 		sitten funktiot, jotka suoritetaan, kun painikkeita klikataan.</p>
@@ -42,15 +42,40 @@
 		'{ "firstName":"John" , "lastName":"Doe" },' +
 		'{ "firstName":"Anna" , "lastName":"Smith" },' +
 		'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-
 		
+		// Parsitaan data ja sijoitetaan muuttujaan
+		let data = JSON.parse(text);
+
+		// Etsitään laatikko, johon tiedot syötetään
+		let tietokentta = document.querySelector("#jsondata")
+
+		// 1. napin funktio
+		function etuJaSuku() {
+			let nimet = "";
+			for (let i= 0 ; i < data.employees.length; i++){
+			nimet += data.employees[i].firstName + " ";
+			nimet += data.employees[i].lastName + "<br>";
+			}
+			// DOM-scriptataan oikealle paikalle
+			tietokentta.innerHTML = nimet;
+		}
+
+		// 2. nappi
+		function kaikki() {
+			let tiedot = "";
+			for (let i= 0 ; i < data.employees.length; i++){
+			tiedot += "etunimi: " + data.employees[i].firstName + ", ";
+			tiedot += "sukunimi: " + data.employees[i].lastName + "<br>";
+			}
+			tietokentta.innerHTML = tiedot;
+		}
 	</script>
 	<h2>Harjoitus 2: JSONin parsiminen verkosta</h2>
 	<p>Alla näet kaksi painiketta. Muokkaa lähdekoodia ja lisää näihin painikkeisiin onClick-tapahtumat. Lisää
 		toiminnallisuudet alla kuvatulla tavalla.</p>
 	<p>
-		<button>Lataa raaka data</button>
-		<button>Lataa ja parsi data</button>
+		<button onclick = 'raakaData()'>Lataa raaka data</button>
+		<button onclick = 'parsittuData()'>Lataa ja parsi data</button>
 	</p>
 
 	<ul>
@@ -63,7 +88,46 @@
 		<li>Kun olet saanut datan näkyviin, kokeile ladata myös kuvat sivulle.</li>
 	</ul>
 	<div id="rawdata">Raaka data näkyy täällä.</div>
+	<script>
+		// Etsitään kenttä, johon tiedot syötetään
+		const syottoruutu = document.querySelector("#rawdata")
 
+		// Haetaan raakadata API:sta tällä kertaa fetchillä
+		function raakaData() {
+    	fetch('http://www.omdbapi.com/?s=star+wars&apikey=cbbc6750')
+		// Muunnetaan JSON-muotoon
+        .then(response => response.json())
+		// Lähetetään kenttään
+        .then(data => {
+            syottoruutu.innerHTML = JSON.stringify(data);
+        });
+	}
+
+		function parsittuData() {
+    	fetch('http://www.omdbapi.com/?s=star+wars&apikey=cbbc6750')
+		// Muunnetaan JSON-muotoon
+        .then(response => response.json())
+		.then(data => {
+		let rivit = ""
+		
+		for(let i = 0; i < data.Search.length; i++){
+		rivit +=
+			`<tr>
+				<td>${data.Search[i].Title}</td>
+			 	<td>${data.Search[i].Year}</td>				
+				<td>${data.Search[i].Type}</td>
+				<td><img src = ${data.Search[i].Poster}></td>
+			</tr>`;
+		}
+		
+		let taulukko = `
+		<table>
+			${rivit}
+		</table>`;
+		syottoruutu.innerHTML = taulukko;
+	})}
+
+	</script>
 	<hr />
 	<h2>Harjoitus 3: Käytännön haaste: OpenWeatherMap API</h2>
 
